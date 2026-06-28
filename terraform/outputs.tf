@@ -25,3 +25,15 @@ output "ecs_security_group_id" {
 output "rds_security_group_id" {
   value = aws_security_group.rds.id
 }
+
+output "rds_endpoint" {
+  value = aws_db_instance.mysql.address
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.api.repository_url
+}
+
+output "alb_dns_name" {
+  value = aws_lb.api.dns_name
+}
