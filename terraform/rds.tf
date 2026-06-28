@@ -20,7 +20,7 @@ resource "aws_db_instance" "mysql" {
   allocated_storage = 20
   storage_type      = "gp3"
 
-  db_name  = "hotel"
+  db_name  = "cloudtech_hotel"
   username = var.db_username
   password = var.db_password
 

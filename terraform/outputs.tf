@@ -37,3 +37,15 @@ output "ecr_repository_url" {
 output "alb_dns_name" {
   value = aws_lb.api.dns_name
 }
+
+output "frontend_bucket_name" {
+  value = aws_s3_bucket.frontend.bucket
+}
+
+output "cloudfront_domain_name" {
+  value = aws_cloudfront_distribution.frontend.domain_name
+}
+
+output "route53_name_servers" {
+  value = aws_route53_zone.main.name_servers
+}

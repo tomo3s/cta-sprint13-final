@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudTechホテル 口コミ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">CloudTechホテル 口コミ</h1>
+            <nav class="header__nav">
+                <a href="index.html" class="nav__link nav__link--active">口コミ一覧</a>
+                <a href="create.html" class="nav__link">口コミを投稿</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="reviews">
+                <h2 class="reviews__title">口コミ一覧</h2>
+                <div id="reviews-list" class="reviews__list">
+                    <p class="loading">読み込み中...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 CloudTechホテル</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReviews();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>口コミを編集 - CloudTechホテル</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">CloudTechホテル 口コミ</h1>
+            <nav class="header__nav">
+                <a href="index.html" class="nav__link">口コミ一覧</a>
+                <a href="create.html" class="nav__link">口コミを投稿</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="form-section">
+                <h2 class="form-section__title">口コミを編集</h2>
+                <form id="edit-form" class="review-form">
+                    <input type="hidden" id="review-id">
+                    <div class="form-group">
+                        <label for="author_name" class="form-label">投稿者名</label>
+                        <input type="text" id="author_name" name="author_name" class="form-input" required maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="form-label">タイトル</label>
+                        <input type="text" id="title" name="title" class="form-input" required maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="rating" class="form-label">評価</label>
+                        <div class="rating-input">
+                            <input type="radio" id="rating-5" name="rating" value="5" required>
+                            <label for="rating-5">5</label>
+                            <input type="radio" id="rating-4" name="rating" value="4">
+                            <label for="rating-4">4</label>
+                            <input type="radio" id="rating-3" name="rating" value="3">
+                            <label for="rating-3">3</label>
+                            <input type="radio" id="rating-2" name="rating" value="2">
+                            <label for="rating-2">2</label>
+                            <input type="radio" id="rating-1" name="rating" value="1">
+                            <label for="rating-1">1</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="form-label">口コミ内容</label>
+                        <textarea id="content" name="content" class="form-textarea" required rows="6"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <a href="index.html" class="btn btn--secondary">キャンセル</a>
+                        <button type="submit" class="btn btn--primary">更新する</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 CloudTechホテル</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            if (id) {
+                loadReviewForEdit(id);
+                const form = document.getElementById('edit-form');
+                form.addEventListener('submit', handleEditSubmit);
+            } else {
+                alert('口コミIDが指定されていません');
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

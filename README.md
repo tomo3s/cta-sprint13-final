@@ -15,3 +15,12 @@ terraform apply
 - S3
 - CloudFront
 - Route53
+
+■フロント
+https://hotel.tmr-lab.net
+
+■API Health Check
+https://api.hotel.tmr-lab.net/health
+
+■口コミ一覧API
+https://api.hotel.tmr-lab.net/api/v1/reviews

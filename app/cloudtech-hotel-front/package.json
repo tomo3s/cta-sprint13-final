@@ -1,0 +1,13 @@
+{
+  "name": "cloudtech-hotel-front",
+  "version": "1.0.0",
+  "description": "CloudTechホテル口コミシステム フロントエンド",
+  "scripts": {
+    "start": "npx http-server public -p 3000 -c-1",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

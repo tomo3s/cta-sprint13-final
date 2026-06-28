@@ -76,11 +76,11 @@ resource "aws_ecs_task_definition" "api" {
         },
         {
           name  = "DB_NAME"
-          value = "hotel"
+          value = "cloudtech_hotel"
         },
         {
           name  = "ALLOWED_ORIGINS"
-          value = "*"
+          value = "https://dokpoe7ffj3d4.cloudfront.net,https://hotel.tmr-lab.net"
         }
       ]
 
@@ -105,6 +105,9 @@ resource "aws_ecs_service" "api" {
   desired_count   = 1
   launch_type     = "FARGATE"
 
+  # add
+  #enable_execute_command = true
+
   network_configuration {
     subnets          = aws_subnet.private_app[*].id
     security_groups  = [aws_security_group.ecs.id]
@@ -118,7 +121,7 @@ resource "aws_ecs_service" "api" {
   }
 
   depends_on = [
-    aws_lb_listener.http,
+    aws_lb_listener.https,
     aws_iam_role_policy_attachment.ecs_task_execution
   ]
 
