@@ -15,6 +15,9 @@ terraform apply
 - S3
 - CloudFront
 - Route53
+- CloudWatch監視
+  ・ECS CPU使用率が70%を超えた場合にCloudWatch Alarmを発報するよう設定
+  ・ECS Auto ScalingによりCPU使用率に応じてスケールイン・スケールアウトを実施
 
 ■フロント
 https://hotel.tmr-lab.net
