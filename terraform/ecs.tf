@@ -71,16 +71,19 @@ resource "aws_ecs_task_definition" "api" {
           value = var.db_username
         },
         {
-          name  = "DB_PASSWORD"
-          value = var.db_password
-        },
-        {
           name  = "DB_NAME"
           value = "cloudtech_hotel"
         },
         {
           name  = "ALLOWED_ORIGINS"
-          value = "https://dokpoe7ffj3d4.cloudfront.net,https://hotel.tmr-lab.net"
+          value = "https://${var.frontend_domain},https://${aws_cloudfront_distribution.frontend.domain_name}"
+        }
+      ]
+
+      secrets = [
+        {
+          name      = "DB_PASSWORD"
+          valueFrom = aws_ssm_parameter.db_password.arn
         }
       ]
 
@@ -105,9 +108,6 @@ resource "aws_ecs_service" "api" {
   desired_count   = 1
   launch_type     = "FARGATE"
 
-  # add
-  #enable_execute_command = true
-
   network_configuration {
     subnets          = aws_subnet.private_app[*].id
     security_groups  = [aws_security_group.ecs.id]
@@ -122,7 +122,8 @@ resource "aws_ecs_service" "api" {
 
   depends_on = [
     aws_lb_listener.https,
-    aws_iam_role_policy_attachment.ecs_task_execution
+    aws_iam_role_policy_attachment.ecs_task_execution,
+    aws_iam_role_policy.ecs_task_execution_ssm
   ]
 
   tags = local.tags
